@@ -42,7 +42,7 @@ public class RadioTest {
     @Test
     void shoudIncreaseVolumExceeding() {              //Громкость +1 превышение
         Radio rad = new Radio();
-        int currentVolume = +15;
+        int currentVolume = 15;
         int expected = 10;
         int actual = rad.increaseVolume(currentVolume);
         assertEquals(expected, actual);
@@ -110,36 +110,57 @@ public class RadioTest {
     @Test
     void shoudSwitchtheNextStationZero() {                 //Следущий канал +1 (Ноль)
         Radio rad = new Radio();
-        int currentStation =9;
+        int currentStation = 9;
         int expected = 0;
         int actual = rad.switchtheNextStation(currentStation);
         assertEquals(expected, actual);
     }
+
     @Test
     void shoudSwitchtheNextStationMinus() {                 //Следущий канал +1 (минус)
         Radio rad = new Radio();
-        int currentStation =-3;
+        int currentStation = -3;
         int expected = 0;
         int actual = rad.switchtheNextStation(currentStation);
         assertEquals(expected, actual);
     }
 
     @Test
-    void shoudSwitchingThePreviousStation() {                        //предыдущий канал -1
+    void shoudSwitchingThePreviousStationInvalidValue() {          //предыдущий канал -1(не допустимое значение)
         Radio rad = new Radio();
-        int currentStation = 8;
-        int expected = 7;
+        int currentStation = 10;
+        int expected = 10;
+        int actual = rad.switchingThePreviousStation(currentStation);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shoudSwitchingThePreviousStationTwo() {                        //предыдущий канал -1
+        Radio rad = new Radio();
+        int currentStation = 1;
+        int expected = 0;
         int actual = rad.switchingThePreviousStation(currentStation);
         assertEquals(expected, actual);
     }
 
 
     @Test
-    void shoudSwitchingThePreviousStation1() {                        //предыдущий канал -1 ноль
+    void shoudSwitchingThePreviousStationZero() {                        //предыдущий канал -1 ноль
         Radio rad = new Radio();
-        int currentStation = 9;
-        int expected = 8;
+        int currentStation = 0;
+        int expected = 9;
         int actual = rad.switchingThePreviousStation(currentStation);
         assertEquals(expected, actual);
     }
+
+    @Test
+    void shoudSwitchingThePreviousStationZeroMinus() {                        //предыдущий канал -1 (минус)
+        Radio rad = new Radio();
+        int currentStation = -3;
+        int expected = 9;
+        int actual = rad.switchingThePreviousStation(currentStation);
+        assertEquals(expected, actual);
+    }
+
+
 }

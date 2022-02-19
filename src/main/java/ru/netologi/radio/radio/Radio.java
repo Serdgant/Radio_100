@@ -62,7 +62,7 @@ public class Radio {
             return currentRadioStationNumber;
         }
         if (currentRadioStationNumber < 0) {
-            currentRadioStationNumber=0;
+            currentRadioStationNumber = 0;
         }
         this.currentRadioStationNumber = currentRadioStationNumber;
         return this.currentRadioStationNumber;
@@ -70,7 +70,7 @@ public class Radio {
 
     public int switchtheNextStation(int currentStation) {        //следующий канал +1
 
-        if (currentStation > 0) {
+        if (currentStation >= 0) {
             currentStation = currentStation + 1;
         }
         if (currentStation > 9) {
@@ -81,10 +81,10 @@ public class Radio {
     }
 
     public int switchingThePreviousStation(int currentStation) {       //предыдущий канал -1
-        if (currentStation <= 9) {
+        if (currentStation < 10) {
             currentStation = currentStation - 1;
         }
-        if (currentStation <= 0) {
+        if (currentStation < 0) {
             currentStation = 9;
         }
         return setCurrentRadioStationNumber(currentStation);
