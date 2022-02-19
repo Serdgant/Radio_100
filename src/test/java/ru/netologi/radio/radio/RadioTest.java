@@ -99,8 +99,8 @@ public class RadioTest {
     @Test
     void shoudSwitchingThePreviousStation() {                        //предыдущий канал -1
         Radio rad =new Radio();
-        int currentStation=10;
-        int expected=7;
+        int currentStation=9;
+        int expected=8;
         int actual=rad.switchingThePreviousStation(currentStation);
         assertEquals(expected,actual);
     }
