@@ -22,8 +22,10 @@ public class Radio {
         return this.soundVolume;
     }
 
-    public int increaseVolume(int currentVolume) {             //Громкость +1
-        if (currentVolume < 10) {
+    public int increaseVolume() {       //громкость +1
+        int currentVolume = setSoundVolume(soundVolume);
+
+        if (currentVolume <=9) {
             currentVolume = currentVolume + 1;
 
         }
@@ -33,17 +35,15 @@ public class Radio {
         return setSoundVolume(currentVolume);
     }
 
-    public int downTheVolume(int currentVolume) {//Громкость -1
 
-
+    public int downTheVolume() {//Громкость -1
+        int currentVolume = setSoundVolume(soundVolume);
         if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
-
         }
         if (currentVolume <= 0) {
             currentVolume = 0;
         }
-
         return setSoundVolume(currentVolume);
 
 
@@ -58,6 +58,7 @@ public class Radio {
 
     public int setCurrentRadioStationNumber(int currentRadioStationNumber) {     //вводим канал
 
+
         if (currentRadioStationNumber > 9) {
             return currentRadioStationNumber;
         }
@@ -68,7 +69,8 @@ public class Radio {
         return this.currentRadioStationNumber;
     }
 
-    public int switchtheNextStation(int currentStation) {        //следующий канал +1
+    public int switchtheNextStation() {        //следующий канал +1
+        int currentStation = setCurrentRadioStationNumber(currentRadioStationNumber);
 
         if (currentStation >= 0) {
             currentStation = currentStation + 1;
@@ -80,8 +82,9 @@ public class Radio {
 
     }
 
-    public int switchingThePreviousStation(int currentStation) {       //предыдущий канал -1
-        if (currentStation < 10) {
+    public int switchingThePreviousStation() {       //предыдущий канал -1
+        int currentStation = setCurrentRadioStationNumber(currentRadioStationNumber);
+        if (currentStation <=9) {
             currentStation = currentStation - 1;
         }
         if (currentStation < 0) {
@@ -92,8 +95,6 @@ public class Radio {
 
 
 }
-
-
 
 
 
