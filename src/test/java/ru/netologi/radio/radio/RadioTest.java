@@ -84,7 +84,7 @@ public class RadioTest {
     void shoudGetCurrentRadioStationNumberExceeding() {           //вводим канал превышение
         Radio rad = new Radio();
         rad.setCurrentRadioStationNumber(10);
-        int expected = 0;
+        int expected = 9;
         int actual = rad.getCurrentRadioStationNumber();
         assertEquals(expected, actual);
     }
@@ -112,13 +112,13 @@ public class RadioTest {
     void shoudSwitchtheNextStationZero() {                 //Следущий канал +1 (Ноль)
         Radio rad = new Radio();
         rad.setCurrentRadioStationNumber(9);
-        int expected = 1;
+        int expected = 0;
         int actual = rad.switchtheNextStation();
         assertEquals(expected, actual);
     }
 
     @Test
-    void shoudSwitchtheNextStationMinus() {                 //Следущий канал +1
+    void shoudSwitchtheNextStationMinus() {                 //Следущий канал  +1 (-7)
         Radio rad = new Radio();
         rad.setCurrentRadioStationNumber(-7);
         int expected = 1;
@@ -127,11 +127,11 @@ public class RadioTest {
     }
 
     @Test
-    void shoudSwitchingThePreviousStationTwo() {                        //предыдущий канал +1(превышение)
+    void shoudSwitchingThePreviousStationTwo() {                        //следующий канал +1(превышение)
         Radio rad = new Radio();
-        rad.setSoundVolume(10);
+        rad.setCurrentRadioStationNumber(10);
         int expected = 0;
-        int actual = rad.switchtheNextStation() ;
+        int actual = rad.switchtheNextStation();
         assertEquals(expected, actual);
     }
 
@@ -146,7 +146,7 @@ public class RadioTest {
     }
 
     @Test
-    void shoudSwitchingThePreviousStationZeroMinus() {                        //предыдущий канал -1 (минус)
+    void shoudSwitchingThePreviousStationAvereng() {                        //предыдущий канал -1 (среднее)
         Radio rad = new Radio();
         rad.setCurrentRadioStationNumber(9);
         int expected = 8;
@@ -156,7 +156,7 @@ public class RadioTest {
 
 
     @Test
-    void shoudSwitchingThePreviousStation() {            // предыдущий канал -1
+    void shoudSwitchingThePreviousStation() {            // предыдущий канал -1  ноль
         Radio rad = new Radio();
         rad.setCurrentRadioStationNumber(1);
         int expected = 0;
@@ -174,11 +174,13 @@ public class RadioTest {
     }
 
     @Test
-    void shouldSwitchingThePreviousStationn() {
+    void shouldSwitchingThePreviousStationMinuss() {                 //предыдущий канал -1(-3)
         Radio rad = new Radio();
-        rad.setCurrentRadioStationNumber(10);
-        int expected = 9;
+        rad.setCurrentRadioStationNumber(15);
+        int expected = 8;
         int actual = rad.switchingThePreviousStation();
         assertEquals(expected, actual);
     }
+
+
 }

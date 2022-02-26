@@ -25,7 +25,7 @@ public class Radio {
     public int increaseVolume() {       //громкость +1
         int currentVolume = setSoundVolume(soundVolume);
 
-        if (currentVolume <=9) {
+        if (currentVolume <= 9) {
             currentVolume = currentVolume + 1;
 
         }
@@ -46,7 +46,6 @@ public class Radio {
         }
         return setSoundVolume(currentVolume);
 
-
     }
 
     private int currentRadioStationNumber;                 //текущий канал радио
@@ -57,10 +56,8 @@ public class Radio {
     }
 
     public int setCurrentRadioStationNumber(int currentRadioStationNumber) {     //вводим канал
-
-
         if (currentRadioStationNumber > 9) {
-            return currentRadioStationNumber;
+            currentRadioStationNumber = 9;
         }
         if (currentRadioStationNumber < 0) {
             currentRadioStationNumber = 0;
@@ -70,27 +67,24 @@ public class Radio {
     }
 
     public int switchtheNextStation() {        //следующий канал +1
-        int currentStation=setCurrentRadioStationNumber(soundVolume);
-
-        if (currentStation >=0) {
-            currentStation = currentStation + 1;
-        }
+        int currentStation = currentRadioStationNumber;
+        currentStation = currentStation + 1;
         if (currentStation > 9) {
             currentStation = 0;
         }
-        return setCurrentRadioStationNumber(currentStation);
+
+        return currentStation;
 
     }
 
     public int switchingThePreviousStation() {       //предыдущий канал -1
-        int currentStation = setCurrentRadioStationNumber(currentRadioStationNumber);
-        if (currentStation <10) {
-            currentStation = currentStation - 1;
-        }
+        int currentStation = currentRadioStationNumber;
+        currentStation = currentStation - 1;
         if (currentStation < 0) {
             currentStation = 9;
         }
-        return setCurrentRadioStationNumber(currentStation);
+        return currentStation;
+
     }
 
 
