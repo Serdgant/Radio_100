@@ -70,9 +70,9 @@ public class Radio {
     }
 
     public int switchtheNextStation() {        //следующий канал +1
-        int currentStation = setCurrentRadioStationNumber(currentRadioStationNumber);
+        int currentStation=setCurrentRadioStationNumber(soundVolume);
 
-        if (currentStation >= 0) {
+        if (currentStation >=0) {
             currentStation = currentStation + 1;
         }
         if (currentStation > 9) {
@@ -84,7 +84,7 @@ public class Radio {
 
     public int switchingThePreviousStation() {       //предыдущий канал -1
         int currentStation = setCurrentRadioStationNumber(currentRadioStationNumber);
-        if (currentStation <=9) {
+        if (currentStation <10) {
             currentStation = currentStation - 1;
         }
         if (currentStation < 0) {
