@@ -183,4 +183,12 @@ public class RadioTest {
     }
 
 
+    @Test
+    void shoudSwitchingThePreviousStationZer() {
+        Radio rad = new Radio();
+        rad.setCurrentRadioStationNumber(8);
+        int expected = 7;
+        int actual = rad.switchingThePreviousStation();
+        assertEquals(expected, actual);
+    }
 }
