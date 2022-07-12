@@ -1,6 +1,18 @@
 package ru.netologi.radio.radio;
 
 public class Radio {
+    private int maxCurrentRadioStationNumber = 9;
+    private int minCurrentRadioStationNumber = 0;
+    private int currentRadioStationNumber = minCurrentRadioStationNumber;
+
+    public Radio(int maxCurrentRadioStationNumber) {
+        this.maxCurrentRadioStationNumber = maxCurrentRadioStationNumber - 1;
+    }
+
+    public Radio() {
+
+    }
+
     private int soundVolume;       //Объем звука
 
     public int getSoundVolume() {     //Получаем объем звука
@@ -48,7 +60,7 @@ public class Radio {
 
     }
 
-    private int currentRadioStationNumber;                 //текущий канал радио
+    // private int currentRadioStationNumber;                 //текущий канал радио
 
 
     public int getCurrentRadioStationNumber() {           //получаем канал
@@ -56,10 +68,10 @@ public class Radio {
     }
 
     public int setCurrentRadioStationNumber(int currentRadioStationNumber) {     //вводим канал
-        if (currentRadioStationNumber > 9) {
-            currentRadioStationNumber = 9;
+        if (currentRadioStationNumber > maxCurrentRadioStationNumber) {
+            currentRadioStationNumber = maxCurrentRadioStationNumber;
         }
-        if (currentRadioStationNumber < 0) {
+        if (currentRadioStationNumber < minCurrentRadioStationNumber) {
             currentRadioStationNumber = 0;
         }
         this.currentRadioStationNumber = currentRadioStationNumber;
@@ -69,7 +81,7 @@ public class Radio {
     public int switchtheNextStation() {        //следующий канал +1
         int currentStation = currentRadioStationNumber;
         currentStation = currentStation + 1;
-        if (currentStation > 9) {
+        if (currentStation > maxCurrentRadioStationNumber) {
             currentStation = 0;
         }
 
@@ -81,7 +93,7 @@ public class Radio {
         int currentStation = currentRadioStationNumber;
         currentStation = currentStation - 1;
         if (currentStation < 0) {
-            currentStation = 9;
+            currentStation = maxCurrentRadioStationNumber;
         }
         return currentStation;
 
@@ -89,7 +101,6 @@ public class Radio {
 
 
 }
-
 
 
 

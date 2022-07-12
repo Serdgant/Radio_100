@@ -1,5 +1,6 @@
 package ru.netologi.radio.radio;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -190,5 +191,18 @@ public class RadioTest {
         int expected = 7;
         int actual = rad.switchingThePreviousStation();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shoudRadiTest() {                        //переход мин и макс
+        Radio rad = new Radio(13);
+        rad.setCurrentRadioStationNumber(12);
+
+        Assertions.assertEquals(0, rad.switchtheNextStation());         // +1
+
+        rad.setCurrentRadioStationNumber(0);                                   //-1
+        assertEquals(12, rad.switchingThePreviousStation());
+
+
     }
 }
