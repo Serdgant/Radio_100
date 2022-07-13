@@ -1,6 +1,23 @@
 package ru.netologi.radio.radio;
 
 public class Radio {
+    private int maxCurrentRadioStationNumber = 9;
+    private int minCurrentRadioStationNumber = 0;
+    private int currentRadioStationNumber = minCurrentRadioStationNumber;
+    private int maxSoundVolume = 10;
+    private int minSoundVolime = 0;
+    private int currentSoundVolume = minSoundVolime;
+
+
+    public Radio(int maxCurrentRadioStationNumber, int maxSoundVolume) {
+        this.maxCurrentRadioStationNumber = maxCurrentRadioStationNumber - 1;
+        this.maxSoundVolume = maxSoundVolume;
+    }
+
+    public Radio() {
+
+    }
+
     private int soundVolume;       //Объем звука
 
     public int getSoundVolume() {     //Получаем объем звука
@@ -10,8 +27,8 @@ public class Radio {
 
     public int setSoundVolume(int SoundVolume) {     //вводим громкости(Меняем громкость)
         soundVolume = SoundVolume;
-        if (SoundVolume > 10) {
-            setSoundVolume(10);
+        if (SoundVolume > maxSoundVolume) {
+            setSoundVolume(maxSoundVolume);
 
         }
         if (SoundVolume < 0) {
@@ -25,12 +42,12 @@ public class Radio {
     public int increaseVolume() {       //громкость +1
         int currentVolume = setSoundVolume(soundVolume);
 
-        if (currentVolume <= 9) {
+        if (currentVolume <= minSoundVolime) {
             currentVolume = currentVolume + 1;
 
         }
-        if (currentVolume >= 10) {
-            currentVolume = 10;
+        if (currentVolume >= maxSoundVolume) {
+            currentVolume = maxSoundVolume;
         }
         return setSoundVolume(currentVolume);
     }
@@ -38,17 +55,17 @@ public class Radio {
 
     public int downTheVolume() {//Громкость -1
         int currentVolume = setSoundVolume(soundVolume);
-        if (currentVolume > 0) {
+        if (currentVolume > minSoundVolime) {
             currentVolume = currentVolume - 1;
         }
-        if (currentVolume <= 0) {
-            currentVolume = 0;
+        if (currentVolume <= minSoundVolime) {
+            currentVolume = minSoundVolime;
         }
         return setSoundVolume(currentVolume);
 
     }
 
-    private int currentRadioStationNumber;                 //текущий канал радио
+    // private int currentRadioStationNumber;                 //текущий канал радио
 
 
     public int getCurrentRadioStationNumber() {           //получаем канал
@@ -56,10 +73,10 @@ public class Radio {
     }
 
     public int setCurrentRadioStationNumber(int currentRadioStationNumber) {     //вводим канал
-        if (currentRadioStationNumber > 9) {
-            currentRadioStationNumber = 9;
+        if (currentRadioStationNumber > maxCurrentRadioStationNumber) {
+            currentRadioStationNumber = maxCurrentRadioStationNumber;
         }
-        if (currentRadioStationNumber < 0) {
+        if (currentRadioStationNumber < minCurrentRadioStationNumber) {
             currentRadioStationNumber = 0;
         }
         this.currentRadioStationNumber = currentRadioStationNumber;
@@ -69,7 +86,7 @@ public class Radio {
     public int switchtheNextStation() {        //следующий канал +1
         int currentStation = currentRadioStationNumber;
         currentStation = currentStation + 1;
-        if (currentStation > 9) {
+        if (currentStation > maxCurrentRadioStationNumber) {
             currentStation = 0;
         }
 
@@ -81,7 +98,7 @@ public class Radio {
         int currentStation = currentRadioStationNumber;
         currentStation = currentStation - 1;
         if (currentStation < 0) {
-            currentStation = 9;
+            currentStation = maxCurrentRadioStationNumber;
         }
         return currentStation;
 
@@ -89,8 +106,4 @@ public class Radio {
 
 
 }
-
-
-
-
 
