@@ -195,13 +195,18 @@ public class RadioTest {
 
     @Test
     public void shoudRadiTest() {                        //переход мин и макс
-        Radio rad = new Radio(13);
+        Radio rad = new Radio(13, 100);
         rad.setCurrentRadioStationNumber(12);
+
 
         Assertions.assertEquals(0, rad.switchtheNextStation());         // +1
 
         rad.setCurrentRadioStationNumber(0);                                   //-1
         assertEquals(12, rad.switchingThePreviousStation());
+        rad.setSoundVolume(100);
+        Assertions.assertEquals(100, rad.increaseVolume());   // +1
+        rad.setSoundVolume(0);
+        Assertions.assertEquals(0, rad.downTheVolume());      //-1
 
 
     }
